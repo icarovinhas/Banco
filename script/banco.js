@@ -15,7 +15,7 @@ function consultar() {
         })
         .then(data => {
             const tabelaCorpo = document.getElementById('tabela-corpo');
-            tabelaCorpo.innerHTML = ''; // Limpa o conteúdo anterior
+            tabelaCorpo.innerHTML = '';
 
             const itens = [
                 { item: 'Código', valor: data.code },
@@ -34,6 +34,8 @@ function consultar() {
                 tr.appendChild(tdValor);
                 tabelaCorpo.appendChild(tr);
             });
+
+            document.getElementById('tabela').style.display = 'block';
         })
         .catch(error => {
             alert('Erro: ' + error.message);

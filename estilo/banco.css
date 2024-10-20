@@ -45,3 +45,12 @@ main > section >  p {
 footer {
     text-align: center;
 }
+
+footer > p {
+    font-size: 1.1em;
+}
+
+footer > p > a {
+    color: black;
+    text-decoration: none;
+}
