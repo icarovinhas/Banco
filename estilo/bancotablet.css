@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* TABLET */
+
+@media screen and (min-width: 760px) and (max-width: 992px) {
+    main {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    main > section > h1 {
+        margin: 20px auto;
+        width: 70%;
+        font-size: 2em;
+        box-sizing: border-box;
+    }
+
+    main > section > h2 {
+        margin: 20px auto;
+        width: 70%;
+        font-size: 1.5em;
+        box-sizing: border-box;
+    }
+
+    main > section > p {
+        margin: 20px auto;
+        width: 70%;
+        font-size: 1.2em;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        width: 80%; /* Ajuste conforme necessário */
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+        margin: 0 auto; /* Centraliza o main */
+    }
+    
+    main > section > h1 {
+        margin: 20px auto;
+        width: 70%;
+        text-align: left;
+        font-size: 2em;
+        box-sizing: border-box;
+    }
+
+    main > section > h2 {
+        margin: 20px auto;
+        width: 70%;
+        text-align: left;
+        font-size: 1.5em;
+        box-sizing: border-box;
+    }
+
+    main > section > p {
+        margin: 20px auto;
+        width: 70%;
+        font-size: 1.2em;
+        box-sizing: border-box;
+    }
+}
