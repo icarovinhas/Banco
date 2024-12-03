@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Taxas</title>
+</head>
+<body>
+    <h1>Consulta Taxas</h1>
+    <select id="selecaoTaxa">
+        <option value="selic">Selic</option>
+        <option value="cdi">CDI</option>
+        <option value="ipca">IPCA</option>
+    </select>
+    <button onclick="consultar()">Consultar</button>
+    <table id="tabela" style="display:none;">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-corpo"></tbody>
+    </table>
+
+    <script>
+        function consultar() {
+            function consultar() {
+    fetch('https://brasilapi.com.br/api/taxas/v1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar as taxas: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Log para depuração
+            const taxaSelecionada = document.getElementById('selecaoTaxa').value;
+            const tabelaCorpo = document.getElementById('tabela-corpo');
+            tabelaCorpo.innerHTML = '';
+            // Acessa a taxa correspondente da resposta
+            const taxa = data.find(t => t.nome.toLowerCase() === taxaSelecionada.toLowerCase());
+            if (taxa) {
+                const tr = document.createElement('tr');
+                const tdNome = document.createElement('td');
+                const tdValor = document.createElement('td');
+                const tdData = document.createElement('td');
+                tdNome.textContent = taxa.nome; // Nome da taxa
+                tdValor.textContent = taxa.valor; // Valor da taxa
+                tdData.textContent = taxa.data; // Data da taxa
+                tr.appendChild(tdNome);
+                tr.appendChild(tdValor);
+                tr.appendChild(tdData);
+                tabelaCorpo.appendChild(tr);
+                document.getElementById('tabela').style.display = 'block'; // Exibe a tabela
+            } else {
+                alert('Taxa não encontrada.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error); // Log para depuração
+            alert(`Ocorreu um erro ao consultar as taxas: ${error.message}`);
+        });
+}}
+
+    </script>
+</body>
+</html>
